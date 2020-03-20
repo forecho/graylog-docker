@@ -3,7 +3,7 @@ services:
   # MongoDB: https://hub.docker.com/_/mongo/
   mongodb:
     image: mongo:3
-  #DB in share for persistence
+  # DB in share for persistence
     volumes:
       - mongo_data:/data/db
   # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.6/docker.html
@@ -25,7 +25,7 @@ services:
   # Graylog: https://hub.docker.com/r/graylog/graylog/
   graylog:
     image: graylog/graylog:3.2
-    #journal and config directories in local NFS share for persistence
+    # journal directories in local NFS share for persistence
     volumes:
       - graylog_journal:/usr/share/graylog/data/journal
     environment:

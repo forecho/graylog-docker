@@ -44,7 +44,7 @@ echo -n "Enter Password: " && head -1 </dev/stdin | tr -d '\n' | sha256sum | cut
 sudo docker-compose up -d
 ```
 
-Finally access `GRAYLOG_HTTP_EXTERNAL_URI` through the browser.
+Finally access `GRAYLOG_HTTP_EXTERNAL_URI` through the browser, local default <http://127.0.0.1:9000/>
 
 
 
