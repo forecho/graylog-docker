@@ -10,7 +10,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
 
-国内版安装
+中国版安装
 
 ```shell
 sudo curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://d52bcda9.m.daocloud.io
@@ -19,6 +19,28 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
 
+换中国源
+
+```
+vim /etc/docker/daemon.json
+```
+
+添加代码：
+
+```json
+{
+    "registry-mirrors": [
+        "https://dockerhub.azk8s.cn",
+        "https://docker.mirrors.ustc.edu.cn"
+    ]
+}
+```
+
+重启服务
+
+```
+sudo systemctl daemon-reload && sudo systemctl restart docker
+```
 
 ### Clone Code
 
