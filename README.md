@@ -23,7 +23,7 @@ docker-compose --version
 
 换中国源
 
-```
+```shell
 vim /etc/docker/daemon.json
 ```
 
@@ -57,7 +57,7 @@ cd graylog-docker
 - **`GRAYLOG_PASSWORD_SECRET`**: This field is used to encrypt Graylog passwords. Must be at least 16 characters.
 - **`GRAYLOG_ROOT_PASSWORD_SHA2`**: This is a SHA2 hash of the password for the admin user (above, the hash is for the password “admin”). You can generate your own password hash with the following command:
 
-```
+```shell
 echo -n "Enter Password: " && head -1 </dev/stdin | tr -d '\n' | sha256sum | cut -d" " -f1
 ```
 - **`GRAYLOG_HTTP_EXTERNAL_URI`**: The public URI of Graylog which will be used by the web interface to communicate with the Graylog REST API.
@@ -73,7 +73,7 @@ Finally access `GRAYLOG_HTTP_EXTERNAL_URI` through the browser, local default <h
 
 ## Test
 
-```
+```shell
 echo '{"version": "1.1","host":"example.org","short_message":"A short message that helps you identify what is going on","full_message":"Backtrace here\n\nmore stuff","level":1,"_user_id":9001,"_some_info":"foo","_some_env_var":"bar"}' | gzip | nc -u -w 1 127.0.0.1 12201
 ```
 
