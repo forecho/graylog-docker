@@ -69,9 +69,14 @@ sudo docker-compose up -d
 Finally access `GRAYLOG_HTTP_EXTERNAL_URI` through the browser, local default <http://127.0.0.1:9000/>
 
 
+## Test
 
+```
+echo '{"version": "1.1","host":"example.org","short_message":"A short message that helps you identify what is going on","full_message":"Backtrace here\n\nmore stuff","level":1,"_user_id":9001,"_some_info":"foo","_some_env_var":"bar"}' | gzip | nc -u -w 1 127.0.0.1 12201
+```
 
 ## Link
 
 - [How to Create a Graylog Container in Docker](https://hometechhacker.com/how-to-create-a-graylog-container-in-docker/)
 - [Docker - Graylog 3.2.0 documentation](https://docs.graylog.org/en/3.2/pages/installation/docker.html)
+- [镜像加速器](https://yeasy.gitbooks.io/docker_practice/install/mirror.html)
