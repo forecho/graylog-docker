@@ -5,6 +5,7 @@
 ### Install Docker
 
 ```shell
+sudo curl -sSL https://get.docker.com/ | sh
 sudo curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
@@ -13,6 +14,7 @@ docker-compose --version
 中国版安装
 
 ```shell
+sudo curl -sSL https://get.daocloud.io/docker | sh
 sudo curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://d52bcda9.m.daocloud.io
 sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
