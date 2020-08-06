@@ -76,18 +76,6 @@ sudo docker-compose up -d
 
 Finally access `GRAYLOG_HTTP_EXTERNAL_URI` through the browser, local default <http://127.0.0.1:9000/>
 
-### About `graylog.conf`
-
-I set Graylog’s retention strategy in its configuration file, so graylog retain log data for 30 days:
-
-```
-elasticsearch_max_time_per_index = 1d
-elasticsearch_max_number_of_indices = 30
-retention_strategy = delete
-```
-
-[How to config graylog data save days](https://www.digitalocean.com/community/questions/how-to-config-graylog-data-save-days)
-
 ## Test
 
 ```shell
