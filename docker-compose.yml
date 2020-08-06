@@ -8,7 +8,7 @@ services:
       - mongo_data:/data/db
   # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.10
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.5
     #data folder in share for persistence
     volumes:
       - es_data:/usr/share/elasticsearch/data
@@ -26,8 +26,8 @@ services:
   graylog:
     image: graylog/graylog:3.2
     volumes:
-      - graylog_journal:/usr/share/graylog/data/journal
-      # - ./graylog/config:/usr/share/graylog/data/config
+     - graylog_config:/usr/share/graylog/data/config
+     - graylog_journal:/usr/share/graylog/data/journal
     environment:
       # CHANGE ME (must be at least 16 characters)!
       - GRAYLOG_PASSWORD_SECRET=${GRAYLOG_PASSWORD_SECRET}
@@ -60,4 +60,6 @@ volumes:
   es_data:
     driver: local
   graylog_journal:
+    driver: local
+  graylog_config:
     driver: local
