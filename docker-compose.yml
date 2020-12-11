@@ -6,7 +6,7 @@ services:
   # DB in share for persistence
     volumes:
       - mongo_data:/data/db
-  # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.6/docker.html
+  # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.5
     #data folder in share for persistence
@@ -27,17 +27,17 @@ services:
   # Graylog: https://hub.docker.com/r/graylog/graylog/
   graylog:
     image: graylog/graylog:3.2
-    # journal directories in local NFS share for persistence
     volumes:
-      - graylog_journal:/usr/share/graylog/data/journal
+     - graylog_config:/usr/share/graylog/data/config
+     - graylog_journal:/usr/share/graylog/data/journal
     environment:
       # CHANGE ME (must be at least 16 characters)!
-      - GRAYLOG_PASSWORD_SECRET=forpasswordencryption
+      - GRAYLOG_PASSWORD_SECRET=${GRAYLOG_PASSWORD_SECRET}
       # Password: admin
-      - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-      - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
-      # Timezone
-      - GRAYLOG_ROOT_TIMEZONE=Asia/Shanghai
+      - GRAYLOG_ROOT_PASSWORD_SHA2=${GRAYLOG_ROOT_PASSWORD_SHA2}
+      - GRAYLOG_HTTP_EXTERNAL_URI=${GRAYLOG_HTTP_EXTERNAL_URI}
+      # Timezone (Optional)
+      - GRAYLOG_ROOT_TIMEZONE=${GRAYLOG_ROOT_TIMEZONE}
     links:
       - mongodb:mongo
       - elasticsearch
@@ -62,4 +62,6 @@ volumes:
   es_data:
     driver: local
   graylog_journal:
+    driver: local
+  graylog_config:
     driver: local
